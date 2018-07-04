@@ -10,6 +10,10 @@ function PixelPainter(width, height) {
   let palatte = document.createElement("div");
   palatte.className = "palatteBox";
 
+  //create a div to hold the buttons
+  let buttons = document.createElement("div");
+  buttons.className = "buttons";
+
   //This variable selects the color
   let currentColor = "#20B2AA";
 
@@ -53,8 +57,8 @@ function PixelPainter(width, height) {
     isMouseDown = false;
   }
 
-  //Make colors to select from here!!!
-  let colorSwatch = ["#FFA07A", "#20B2AA", "#87CEFA", "#B0C4DE"];
+  //Code for our palatte!!!
+  let colorSwatch = ["#FFA07A", "#20B2AA", "#87CEFA", "#B0C4DE", "#FAFAD2", "#1E90FF", "#ADD8E6", "#00FA9A"];
 
   function creatPalatte() {
     let row = document.createElement("div");
@@ -77,8 +81,25 @@ function PixelPainter(width, height) {
     console.log(currentColor);
   }
 
+  //createButtons!!!
+  function createButtons() {
+    let eraseButton = document.createElement("div");
+    eraseButton.className = "eraseButton";
+    eraseButton.innerHTML = "erase";
+    buttons.appendChild(eraseButton);
+
+    let clearButton = document.createElement("div");
+    clearButton.className = "clearButton";
+    clearButton.innerHTML = "clear";
+    buttons.appendChild(clearButton);
+
+    painter.appendChild(buttons);
+    console.log("button created!");
+  }
+
   createGrid(width, height);
   creatPalatte();
+  createButtons();
 }
 
 PixelPainter(15, 15);
