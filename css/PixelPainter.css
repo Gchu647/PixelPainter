@@ -1,0 +1,17 @@
+#pixelPainter {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.cellsParent {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 100px;
+}
+
+.cell {
+  border: solid 1px dodgerblue;
+  height: 25px;
+  width: 25px;
+}
