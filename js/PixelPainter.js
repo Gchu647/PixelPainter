@@ -44,7 +44,7 @@ function PixelPainter(width, height) {
   function startPaint() {
     this.style.backgroundColor = currentColor;
     isMouseDown = true;
-
+    // console.log(this);
   }
 
   function paintOver() {
@@ -57,7 +57,7 @@ function PixelPainter(width, height) {
     isMouseDown = false;
   }
 
-  //Code for our palatte!!!
+  //Codes for our palatte
   let colorSwatch = ["#FFA07A", "#20B2AA", "#87CEFA", "#B0C4DE", "#FAFAD2", "#1E90FF", "#ADD8E6", "#00FA9A"];
 
   function creatPalatte() {
@@ -78,14 +78,15 @@ function PixelPainter(width, height) {
 
   function setColor() {
     currentColor = this.style.backgroundColor;
-    console.log(currentColor);
+    //console.log(currentColor);
   }
 
-  //createButtons!!!
+  //Erase and Clear Buttons
   function createButtons() {
     let eraseButton = document.createElement("div");
     eraseButton.className = "eraseButton";
     eraseButton.innerHTML = "erase";
+    eraseButton.addEventListener("click", eraseCells);
     buttons.appendChild(eraseButton);
 
     let clearButton = document.createElement("div");
@@ -96,6 +97,23 @@ function PixelPainter(width, height) {
     painter.appendChild(buttons);
     console.log("button created!");
   }
+
+  // This function erases cells when pressed
+  function eraseCells() {
+    let newCell = document.getElementsByClassName("cell");
+    let cellColor = newCell[0];
+    cellColor.style.backgroundColor = null; //Use null instead of white
+    console.log("changed");
+  }
+
+  /* Erase one cell;
+    function eraseCells() {
+    let newCell = document.getElementsByClassName("cell");
+    let cellColor = newCell[0];
+    cellColor.style.backgroundColor = null; //Use null instead of white
+    console.log("changed");
+  } 
+  */
 
   createGrid(width, height);
   creatPalatte();
