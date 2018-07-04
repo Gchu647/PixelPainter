@@ -80,7 +80,6 @@ function PixelPainter(width, height) {
 
   function setColor() {
     currentColor = this.style.backgroundColor;
-    //console.log(currentColor);
   }
 
   //Erase and Clear Buttons
@@ -94,25 +93,26 @@ function PixelPainter(width, height) {
     let clearButton = document.createElement("div");
     clearButton.className = "clearButton";
     clearButton.innerHTML = "clear";
+    clearButton.addEventListener("click", clearCells)
     buttons.appendChild(clearButton);
 
     painter.appendChild(buttons);
-    console.log("button created!");
   }
 
-  // This function erases cells when pressed
+  // This function enables you to erase cell color;
   function eraseCells() {
     currentColor = null; //Works better than white
   }
-
-  /* Clear one cell;
-    function clearCells() {
+  
+  //Clear all the grids!
+  function clearCells() {
     let newCell = document.getElementsByClassName("cell");
-    let cellColor = newCell[0];
-    cellColor.style.backgroundColor = null; //Use null instead of white
-    console.log("changed");
+
+    for(let i = 0; i < newCell.length; i++) {
+      let cellColor = newCell[i];
+      cellColor.style.backgroundColor = null;
+    }
   } 
-  */
 
   createGrid(width, height);
   creatPalatte();
