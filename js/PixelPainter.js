@@ -7,8 +7,7 @@ function PixelPainter(width, height) {
     //creating the big grid and append it to PixelPainter div
     let grid = document.createElement("div");
     grid.className = "bigGrid";
-    painter.appendChild(grid); // Attach it to the end of the scope so it doesn't flash.
-
+    
     for (let i = 0; i < height; i++) {
       let row = document.createElement("div");
       row.className = "row"; // Same variable and class name okay here
@@ -17,14 +16,22 @@ function PixelPainter(width, height) {
       for(let j = 0; j < width; j++) {
         let cell = document.createElement("div");
         cell.className = "cell";
+        cell.addEventListener("click", colorGrid);
+        cell.addEventListener("dragenter", colorGrid);
         row.appendChild(cell);
       }
 
     }
 
+    // Attach it to the end of the scope so it doesn't flash.
+    painter.appendChild(grid);
+  }
+
+  function colorGrid() {
+    this.style.backgroundColor = "lightseagreen";
   }
 
   createGrid(width, height);
 }
 
-PixelPainter(10, 10);
+PixelPainter(20, 20);
