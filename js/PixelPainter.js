@@ -1,25 +1,30 @@
 function PixelPainter(width, height) {
 
   function createGrid(gridWidth, gridHeight) {
+    // Anchor the pixelPaiter div
     let painter = document.getElementById("pixelPainter");
 
     //creating the big grid and append it to PixelPainter div
     let grid = document.createElement("div");
-    grid.className = "cellsParent";
-    painter.appendChild(grid); // Attach it to the end so it doesn't flash
-    
-    
-    for(let i = 0; i < 10; i++) {
-      let cell = document.createElement("div");
-      cell.className = "cell";
-      grid.appendChild(cell);
-      // We threw a lot of the style DOM out to make it more clean
+    grid.className = "bigGrid";
+    painter.appendChild(grid); // Attach it to the end of the scope so it doesn't flash.
+
+    for (let i = 0; i < height; i++) {
+      let row = document.createElement("div");
+      row.className = "row"; // Same variable and class name okay here
+      grid.appendChild(row);
+      
+      for(let j = 0; j < width; j++) {
+        let cell = document.createElement("div");
+        cell.className = "cell";
+        row.appendChild(cell);
+      }
+
     }
-    
-    grid.children[0].style.backgroundColor="black";
+
   }
 
   createGrid(width, height);
 }
 
-PixelPainter(3, 3);
+PixelPainter(10, 10);
