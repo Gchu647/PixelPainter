@@ -20,6 +20,9 @@ function PixelPainter(width, height) {
   //Keep tracks of mouse being clicked
   let isMouseDown = false;
 
+  //Keep tracks of if eraseButton
+  let eraseColor = false;
+
   function createGrid(gridWidth, gridHeight) {    
     for (let i = 0; i < height; i++) {
       let row = document.createElement("div");
@@ -42,13 +45,12 @@ function PixelPainter(width, height) {
   }
 
   function startPaint() {
-    this.style.backgroundColor = currentColor;
+    this.style.backgroundColor = currentColor; // paint color
     isMouseDown = true;
-    // console.log(this);
   }
 
   function paintOver() {
-    if(isMouseDown === true) {
+    if(isMouseDown) {
       this.style.backgroundColor = currentColor;
     }
   }
@@ -100,14 +102,11 @@ function PixelPainter(width, height) {
 
   // This function erases cells when pressed
   function eraseCells() {
-    let newCell = document.getElementsByClassName("cell");
-    let cellColor = newCell[0];
-    cellColor.style.backgroundColor = null; //Use null instead of white
-    console.log("changed");
+    currentColor = null; //Works better than white
   }
 
-  /* Erase one cell;
-    function eraseCells() {
+  /* Clear one cell;
+    function clearCells() {
     let newCell = document.getElementsByClassName("cell");
     let cellColor = newCell[0];
     cellColor.style.backgroundColor = null; //Use null instead of white
