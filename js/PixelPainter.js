@@ -14,6 +14,11 @@ function PixelPainter(width, height) {
   let buttons = document.createElement("div");
   buttons.className = "buttons";
 
+  //Holds the buttons and palatte in a bigger div
+  let leftSide = document.createElement("div");
+  leftSide.className = "leftSide";
+  painter.appendChild(leftSide);
+
   //This variable selects the color
   let currentColor = "#20B2AA";
 
@@ -75,7 +80,7 @@ function PixelPainter(width, height) {
       row.appendChild(palColor);
     }
 
-    painter.appendChild(palatte);
+    leftSide.appendChild(palatte);
   }
 
   function setColor() {
@@ -96,7 +101,7 @@ function PixelPainter(width, height) {
     clearButton.addEventListener("click", clearCells)
     buttons.appendChild(clearButton);
 
-    painter.appendChild(buttons);
+    leftSide.appendChild(buttons);
   }
 
   // This function enables you to erase cell color;
