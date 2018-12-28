@@ -42,7 +42,6 @@ function PixelPainter(width, height) {
         cell.addEventListener("mouseup", stopPaint);
         row.appendChild(cell);
       }
-
     }
 
     // Attach it to the end of the scope so it doesn't flash.
